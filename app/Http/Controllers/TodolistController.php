@@ -25,7 +25,7 @@ class TodolistController extends Controller
     public function create()
     {
         //
-        return "I should return a form for creating a new list.";
+        return view('lists.create');
     }
 
     /**
