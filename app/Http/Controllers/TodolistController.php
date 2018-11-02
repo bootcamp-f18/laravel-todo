@@ -13,7 +13,7 @@ class TodolistController extends Controller
      */
     public function index()
     {
-        $lists = \App\Todolist::all();
+        $lists = \App\Todolist::where('user_id', \Auth::id())->get();
         return view('lists.index', compact('lists'));
     }
 

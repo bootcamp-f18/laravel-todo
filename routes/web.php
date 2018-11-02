@@ -23,6 +23,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('lists', 'TodolistController');
+Route::resource('lists', 'TodolistController')->middleware('auth');
 
 // Route::get('/lists', "TodolistController@index");

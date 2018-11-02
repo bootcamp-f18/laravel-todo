@@ -31,9 +31,10 @@ class ListsTableSeeder extends Seeder
         }
 
         // Model way...
-
-
-
+        $list = new \App\Todolist;
+        $list->name = $janine->id . '-Cookies To Buy';
+        $list->user_id = $janine->id;
+        $list->save();
 
 
     }

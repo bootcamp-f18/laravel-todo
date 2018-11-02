@@ -15,6 +15,8 @@
                         </div>
                     @endif
 
+<p><a href="/lists/create">Create a new List</a></p>
+
 <ul>
 
 @foreach ($lists as $list)
