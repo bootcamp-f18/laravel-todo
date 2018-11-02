@@ -1,5 +1,9 @@
 @extends('layouts.app-card')
 
+@section('cardheader')
+    Create a New List
+@endsection
+
 @section('cardcontent')
 
 <form class="" method="post" action="/lists">

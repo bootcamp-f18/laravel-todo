@@ -22,11 +22,13 @@ class ListsTableSeeder extends Seeder
 
         // DB facade way...
         foreach ($users as $user) {
+            $cdt = Carbon::now()->subDays(7);
+            $udt = Carbon::now()->subDays(5);
             DB::table('todolists')->insert([
-                'name' => $user->id . '-Grocery List',
+                'name' => $user->id . '-Old List',
                 'user_id' => $user->id,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
+                'created_at' => $cdt,
+                'updated_at' => $udt
             ]);
         }
 

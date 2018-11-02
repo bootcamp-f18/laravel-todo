@@ -1,13 +1,29 @@
 @extends('layouts.app-card')
 
+@section('cardheader')
+    My Lists
+@endsection
+
 @section('cardcontent')
 
 <p><a href="/lists/create">Create a new List</a></p>
 
-<ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Actions</th>
+            <th>List Name</th>
+            <th>Updated</th>
+        </tr>
+    </thead>
+    <tbody>
 
 @foreach ($lists as $list)
-    <li>{{ $list->name }}</li>
+    <tr>
+        <td><a href="/lists/{{ $list->id }}/edit">Edit</a> <a href="#">Delete</a></td>
+        <td>{{ $list->name }}</td>
+        <td>{{ $list->prettyUpdate() }}</td>
+    </tr>
 @endforeach
 
 </ul>

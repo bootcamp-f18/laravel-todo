@@ -43,7 +43,6 @@ class TodolistController extends Controller
 
         $request->session()->flash('status', "A new list called <strong>{$list->name}</strong> was added!");
         return redirect('/lists');
-
     }
 
     /**
@@ -66,8 +65,8 @@ class TodolistController extends Controller
      */
     public function edit($id)
     {
-        //
-        return "I should show you a form for editing list {$id}.";
+        $list = \App\Todolist::find($id);
+        return view('lists.edit', compact('list'));
     }
 
     /**
@@ -79,8 +78,14 @@ class TodolistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        return "I should be updating list {$id}.";
+
+        $list = \App\Todolist::find($id);
+        $list->name = $request->input('listname');
+        $list->save();
+
+        $request->session()->flash('status', "The list is now called <strong>{$list->name}</strong>.");
+        return redirect('/lists');
+
     }
 
     /**
