@@ -13,7 +13,8 @@ class TodolistController extends Controller
      */
     public function index()
     {
-        $lists = \App\Todolist::where('user_id', \Auth::id())->orderBy('updated_at', 'desc')->get();
+        // $lists = \App\Todolist::where('user_id', \Auth::id())->orderBy('updated_at', 'desc')->get();
+        $lists = \Auth::user()->lists()->orderBy('updated_at', 'desc')->get();
         return view('lists.index', compact('lists'));
     }
 
