@@ -20,7 +20,10 @@
 
 @foreach ($lists as $list)
     <tr>
-        <td><a href="/lists/{{ $list->id }}/edit">Edit</a> <a href="#">Delete</a></td>
+        <td>
+            <a href="/lists/{{ $list->id }}/edit">Edit</a>
+            <a href="/lists/{{ $list->id }}/delete">Delete</a>
+        </td>
         <td>{{ $list->name }}</td>
         <td>{{ $list->prettyUpdate() }}</td>
     </tr>

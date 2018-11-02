@@ -94,9 +94,19 @@ class TodolistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
-        return "I should be deleting {$id}.";
+        $list = \App\Todolist::find($id);
+        $list->delete();
+
+        $request->session()->flash('status', "The list called <strong>{$list->name}</strong> was deleted.");
+        return redirect('/lists');
+    }
+
+    public function confirmDelete($id)
+    {
+        $list = \App\Todolist::find($id);
+        return view('lists.confirmDelete', compact('list'));
+
     }
 }
