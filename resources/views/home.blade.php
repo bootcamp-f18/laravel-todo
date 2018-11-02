@@ -15,7 +15,7 @@
                     @endif
 
 
-                    <a href="/todo">Go to your To-Do List</a>
+                    <a href="/lists">Go to your Lists</a>
 
                 </div>
             </div>
