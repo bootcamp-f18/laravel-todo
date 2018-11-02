@@ -14,5 +14,9 @@ class Todolist extends Model
     }
 
     // Mutator - changes what is saved to the database for 'name'
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = \Auth::id() . '-' . $value;
+    }
 
 }

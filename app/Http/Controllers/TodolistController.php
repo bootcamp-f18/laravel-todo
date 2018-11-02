@@ -13,7 +13,7 @@ class TodolistController extends Controller
      */
     public function index()
     {
-        $lists = \App\Todolist::where('user_id', \Auth::id())->get();
+        $lists = \App\Todolist::where('user_id', \Auth::id())->orderBy('updated_at', 'desc')->get();
         return view('lists.index', compact('lists'));
     }
 
@@ -36,8 +36,14 @@ class TodolistController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return "I should add a new record.";
+        $list = new \App\Todolist;
+        $list->name = $request->input('listname');
+        $list->user_id = \Auth::id();
+        $list->save();
+
+        $request->session()->flash('status', "A new list called <strong>{$list->name}</strong> was added!");
+        return redirect('/lists');
+
     }
 
     /**
