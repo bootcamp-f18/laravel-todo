@@ -21,7 +21,8 @@
 @foreach ($lists as $list)
     <tr>
         <td>
-            <a href="/lists/{{ $list->id }}/edit">Edit</a>
+            <a href="/lists/{{ $list->id }}">Items</a> |
+            <a href="/lists/{{ $list->id }}/edit">Edit</a> |
             <a href="/lists/{{ $list->id }}/delete">Delete</a>
         </td>
         <td>{{ $list->name }}</td>

@@ -17,8 +17,12 @@ class ListsTableSeeder extends Seeder
 
         $users = [ $janine, $bob ];
 
-        // SQL way...
-
+        // SQL way (like when we did a pure PHP example)...
+        $sql = "
+            insert into todolists (name, user_id, created_at, updated_at)
+            values ('" . $bob->id . "-Lots of Things To Do', " . $bob->id . ", now(), now())
+        ";
+        DB::statement($sql);
 
         // DB facade way...
         foreach ($users as $user) {
@@ -37,7 +41,6 @@ class ListsTableSeeder extends Seeder
         $list->name = $janine->id . '-Cookies To Buy';
         $list->user_id = $janine->id;
         $list->save();
-
 
     }
 }

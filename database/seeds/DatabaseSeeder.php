@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+var_dump(\Auth::user());
+
         $this->call(UsersTableSeeder::class);
         $this->call(ListsTableSeeder::class);
         $this->call(ListitemsTableSeeder::class);

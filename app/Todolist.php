@@ -17,7 +17,12 @@ class Todolist extends Model
     // Mutator - changes what is saved to the database for 'name'
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = \Auth::id() . '-' . $value;
+        if (\Auth::check()) {
+            $this->attributes['name'] = \Auth::id() . '-' . $value;
+        }
+        else {
+            $this->attributes['name'] = $value;
+        }
     }
 
     // The nice date we show to users
@@ -39,5 +44,9 @@ class Todolist extends Model
     // public function owner() {
     //     return $this->belongsTo('App\User', 'user_id', 'id');
     // }
+
+    public function items() {
+        return $this->hasMany('App\Todolistitem');
+    }
 
 }

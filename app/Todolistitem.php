@@ -7,5 +7,9 @@ use Carbon\Carbon;
 
 class Todolistitem extends Model
 {
-    //
+
+    public function list() {
+        return $this->belongsTo('App\Todolist');
+    }
+
 }

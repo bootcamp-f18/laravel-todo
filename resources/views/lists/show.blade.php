@@ -8,6 +8,14 @@
 
 <h2>{{ $list->name }}</h2>
 
-List items go here!
+<ul>
+
+@foreach ($list->items()->get() as $item)
+
+    <li>{{ $item->task }}</li>
+
+@endforeach
+
+</ul>
 
 @endsection
