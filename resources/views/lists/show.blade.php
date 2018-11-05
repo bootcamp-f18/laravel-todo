@@ -15,12 +15,13 @@
         <tr>
             <th>Actions</th>
             <th>Tasks</th>
+            <th>Updated</th>
             <th>Completed?</th>
         </tr>
     </thead>
     <tbody>
 
-@foreach ($list->items()->get() as $item)
+@foreach ($list->items()->orderBy('updated_at', 'desc')->get() as $item)
 
     <tr>
         <td>
@@ -28,7 +29,8 @@
             <a href="/lists/{{ $list->id }}/items/{{ $item->id }}/delete">Delete</a>
         </td>
         <td>{{ $item->task }}</td>
-        <td><input type="checkbox"></td>
+        <td>{{ $item->prettyUpdate() }}</td>
+        <td><input type="checkbox" {{ $item->is_completed ? "checked" : "" }} disabled></td>
     </tr>
 
 @endforeach

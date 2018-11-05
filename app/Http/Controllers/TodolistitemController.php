@@ -54,9 +54,11 @@ class TodolistitemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($list_id, $item_id)
     {
-        return "Show a form for editing an item";
+        $item = \App\Todolistitem::find($item_id);
+        $list = $item->list()->first();
+        return view('items.edit', compact('item', 'list'));
     }
 
     /**
@@ -66,9 +68,14 @@ class TodolistitemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $list_id, $item_id)
     {
-        return "Save changes to an existing item";
+        $item = \App\Todolistitem::find($item_id);
+        $item->task = $request->input('task');
+        $item->is_completed = $request->has('is_completed') ? true: false;
+        $item->save();
+        $request->session()->flash('status', "Task <strong>{$item->task}</strong> was updated!");
+        return redirect("/lists/{$item->todolist_id}");
     }
 
     /**
