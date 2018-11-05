@@ -11,9 +11,9 @@ class TodolistitemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($list_id, $item_id)
     {
-        return "Here is the item index";
+        return redirect("/lists/$list_id");
     }
 
     /**
@@ -50,9 +50,9 @@ class TodolistitemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($list_id, $item_id)
     {
-        return "Display an item (no edit)";
+        return redirect("/lists/$list_id");
     }
 
     /**

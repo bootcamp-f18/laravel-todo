@@ -23,7 +23,13 @@
         <td>
             <a href="/lists/{{ $list->id }}">Items</a> |
             <a href="/lists/{{ $list->id }}/edit">Edit</a> |
+
+        @if ($list->items()->count() > 0)
+            <span class="text-black-50">Delete</span>
+        @else
             <a href="/lists/{{ $list->id }}/delete">Delete</a>
+        @endif
+
         </td>
         <td>{{ $list->name }}</td>
         <td>{{ $list->prettyUpdate() }}</td>

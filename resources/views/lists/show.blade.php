@@ -35,6 +35,15 @@
 
 @endforeach
 
+@if($list->items()->count() == 0)
+    <tr>
+        <td colspan=4 class="pt-5 text-center">
+            This list has no tasks.<br />
+            <a href="/lists/{{ $list->id }}/items/create">Create one!</a>
+        </td>
+    </tr>
+@endif
+
     </tbody>
 </table>
 
