@@ -21,9 +21,10 @@ class TodolistitemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($list_id)
     {
-        return "Create a new item";
+        $list = \App\Todolist::find($list_id);
+        return view('items.create', compact('list'));
     }
 
     /**
@@ -32,9 +33,15 @@ class TodolistitemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $list_id)
     {
-        return "Save a new item";
+        $item = new \App\Todolistitem;
+        $item->task = $request->input('task');
+        $item->is_completed = $request->has('is_completed') ? true: false;
+        $item->todolist_id = $list_id;
+        $item->save();
+        $request->session()->flash('status', "Task <strong>{$item->task}</strong> was added!");
+        return redirect("/lists/{$item->todolist_id}");
     }
 
     /**
