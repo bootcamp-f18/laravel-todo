@@ -26,4 +26,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('lists', 'TodolistController')->middleware('auth');
 Route::get('/lists/{id}/delete', 'TodolistController@confirmDelete')->middleware('auth');
 
-// Route::get('/lists', "TodolistController@index");
+Route::resource('lists/{list}/items', 'TodolistitemController')->middleware('auth');
+Route::get('/lists/{list}/items/{item}/delete', 'TodolistitemController@confirmDelete')->middleware('auth');

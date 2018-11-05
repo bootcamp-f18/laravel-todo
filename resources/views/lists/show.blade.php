@@ -8,14 +8,32 @@
 
 <h2>{{ $list->name }}</h2>
 
-<ul>
+<p><a href="/lists/{{ $list->id }}/items/create">Create a new Task</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Actions</th>
+            <th>Tasks</th>
+            <th>Completed?</th>
+        </tr>
+    </thead>
+    <tbody>
 
 @foreach ($list->items()->get() as $item)
 
-    <li>{{ $item->task }}</li>
+    <tr>
+        <td>
+            <a href="/lists/{{ $list->id }}/items/{{ $item->id }}/edit">Edit</a> |
+            <a href="/lists/{{ $list->id }}/items/{{ $item->id }}/delete">Delete</a>
+        </td>
+        <td>{{ $item->task }}</td>
+        <td><input type="checkbox"></td>
+    </tr>
 
 @endforeach
 
-</ul>
+    </tbody>
+</table>
 
 @endsection
