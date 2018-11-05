@@ -54,8 +54,8 @@ class TodolistController extends Controller
      */
     public function show($id)
     {
-        //
-        return "I should show you a list (specifically, number {$id}).";
+        $list = \App\Todolist::find($id);
+        return view('lists.show', compact('list'));
     }
 
     /**
