@@ -21,13 +21,13 @@
 @foreach ($lists as $list)
     <tr>
         <td>
-            <a href="/lists/{{ $list->id }}">Items</a> |
-            <a href="/lists/{{ $list->id }}/edit">Edit</a> |
+            <a href="/lists/{{ $list->id }}" dusk="items-{{ $list->id }}">Items</a> |
+            <a href="/lists/{{ $list->id }}/edit" dusk="edit-{{ $list->id }}">Edit</a> |
 
         @if ($list->items()->count() > 0)
             <span class="text-black-50">Delete</span>
         @else
-            <a href="/lists/{{ $list->id }}/delete">Delete</a>
+            <a href="/lists/{{ $list->id }}/delete" dusk="delete-{{ $list->id }}">Delete</a>
         @endif
 
         </td>
